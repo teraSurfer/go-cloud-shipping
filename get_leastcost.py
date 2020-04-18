@@ -20,12 +20,13 @@ def handler(event, context):
     # then return the current least shipment cost for given
     # source and destination divisions.
     if event[PARAMS]:
-        sourceDivision = event[PARAMS]['sourceDivision']
-        destinationDivision = event[PARAMS]['destinationDivision']
+        source_division = event[PARAMS]['sourceDivision']
+        destination_division = event[PARAMS]['destinationDivision']
         for item in data:
-            if item['SourceDivision'] == sourceDivision:
-                data= {'leastprice' : item[destinationDivision]}
+            if item['SourceDivision'] == source_division:
+                data= {'least_price': item[destination_division]}
+                break
 
     return {'statusCode': 200,
-            'body': json.dumps(data, default=utilities.decimal_default),
+            'body': json.dumps({'least_price': list(data)}, default=utilities.decimal_default),
             'headers': {'Content-Type': 'application/json',"Access-Control-Allow-Origin": "*"}}
