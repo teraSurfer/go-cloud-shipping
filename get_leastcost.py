@@ -24,9 +24,11 @@ def handler(event, context):
         destination_division = event[PARAMS]['destinationDivision']
         for item in data:
             if item['SourceDivision'] == source_division:
-                data= {'least_price': item[destination_division]}
+                data = {'least_price': item[destination_division]}
                 break
+    else:
+        data = {'least_price': list(data)}
 
     return {'statusCode': 200,
-            'body': json.dumps({'least_price': list(data)}, default=utilities.decimal_default),
+            'body': json.dumps(data, default=utilities.decimal_default),
             'headers': {'Content-Type': 'application/json',"Access-Control-Allow-Origin": "*"}}
