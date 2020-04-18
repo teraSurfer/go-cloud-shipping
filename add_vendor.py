@@ -19,7 +19,7 @@ def handler(event, context):
 
     response = table.get_item(
         Key={
-            U_EMAIL_COLUMN: body['v_email']
+            V_EMAIL_COLUMN: body['v_email']
         }
     )
 

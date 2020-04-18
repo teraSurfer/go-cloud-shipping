@@ -16,8 +16,8 @@ def handler(event, context):
     table = dynamodb.Table(ORDERS_TABLE)
 
     response  = None
-    type = event[PARAMS]['type']
-    if type == 'vendor':
+
+    if event[PARAMS].get('v_email'):
         response = table.scan(
             FilterExpression= Key(V_EMAIL_COLUMN).eq(event[PARAMS]['v_email'])
         )
@@ -26,9 +26,10 @@ def handler(event, context):
             FilterExpression= Key(U_EMAIL_COLUMN).eq(event[PARAMS]['u_email'])
         )
 
-    data =response['Items']
 
+
+    orders = {"orders": response['Items']}
 
     return {'statusCode': 200,
-            'body': json.dumps(data, default=utilities.decimal_default),
+            'body': json.dumps(orders, default=utilities.decimal_default),
             'headers': {'Content-Type': 'application/json',"Access-Control-Allow-Origin": "*"}}

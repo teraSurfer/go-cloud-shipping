@@ -15,7 +15,6 @@ def handler(event, context):
     table = dynamodb.Table(PRICES_TABLE)
     response = table.scan()
     data = response['Items']
-    print(data)
 
     return {'statusCode': 200,
             'body': json.dumps(data, default=utilities.decimal_default),

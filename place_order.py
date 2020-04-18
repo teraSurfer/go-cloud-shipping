@@ -4,6 +4,8 @@ from util.constants import *
 from util import utilities
 import os
 import time
+from datetime import datetime
+
 from datetime import date
 
 dynamodb = None
@@ -53,9 +55,9 @@ def handler(event, context):
             WEIGHT_COLUMN: int(body['weight']),
             O_MOBILE_COLUMN: int(body['o_mobile']),
             D_MOBILE_COLUMN: int(body['d_mobile']),
-            O_DATE_COLUMN: body['o_date'],
-            P_DATE_COLUMN: body['p_date']
-#            STATUS_COLUMN: 'Accepted'
+            O_DATE_COLUMN: str(datetime.fromtimestamp(time.time())),
+            P_DATE_COLUMN: body['p_date'],
+            STATUS_COLUMN: 'Accepted'
         }
     )
 
