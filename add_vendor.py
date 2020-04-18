@@ -23,7 +23,7 @@ def handler(event, context):
         }
     )
 
-    if response.get('Item'):
+    if response.get('Item') is None:
         response = table.put_item(
             Item ={
                 V_EMAIL_COLUMN: body['v_email'],
