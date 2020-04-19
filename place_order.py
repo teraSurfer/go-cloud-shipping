@@ -57,7 +57,9 @@ def handler(event, context):
             D_MOBILE_COLUMN: int(body['d_mobile']),
             O_DATE_COLUMN: str(datetime.fromtimestamp(time.time())),
             P_DATE_COLUMN: body['p_date'],
-            STATUS_COLUMN: 'Accepted'
+            STATUS_COLUMN: 'Accepted',
+            V_NAME_COLUMN: result['v_name'],
+            V_MOBILE_COLUMN: result['v_mobile']
         }
     )
 
