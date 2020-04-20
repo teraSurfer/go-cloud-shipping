@@ -26,9 +26,14 @@ def handler(event, context):
             FilterExpression= Key(U_EMAIL_COLUMN).eq(event[PARAMS]['u_email'])
         )
 
+    new_orders = []
+    for order in response['Items']:
+        new_order = {}
+        for k,v in order.items():
+            new_order[k.lower()] = v
+        new_orders.append(new_order)
 
-
-    orders = {"orders": response['Items']}
+    orders = {"orders": new_orders}
 
     return {'statusCode': 200,
             'body': json.dumps(orders, default=utilities.decimal_default),
