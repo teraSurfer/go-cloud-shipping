@@ -16,7 +16,8 @@ def handler(event, context):
     table = dynamodb.Table(ORDERS_TABLE)
 
     response = table.scan(
-        FilterExpression= Key(U_EMAIL_COLUMN).eq(event[PARAMS]['u_email']) & Key(ID_COLUMN).eq(int(event[PARAMS]['id']))
+        #FilterExpression= Key(U_EMAIL_COLUMN).eq(event[PARAMS]['u_email']) & Key(ID_COLUMN).eq(int(event[PARAMS]['id']))
+        FilterExpression=Key(ID_COLUMN).eq(int(event[PARAMS]['id']))
     )
     print(response)
     data =response['Items'][0]
