@@ -28,7 +28,8 @@ def handler(event, context):
             Item ={
                 U_EMAIL_COLUMN: body['u_email'],
                 FIRST_NAME_COLUMN: body['first_name'],
-                LAST_NAME_COLUMN: body['last_name']
+                LAST_NAME_COLUMN: body['last_name'],
+                PASSWORD : body['password']
             }
         )
 

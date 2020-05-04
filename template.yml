@@ -228,6 +228,22 @@ Resources:
           Properties:
             Path: /addvendor
             Method: post
+  Login:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: login.handler
+      Runtime: python3.7
+      Timeout: 10
+      Role:
+        Fn::GetAtt:
+        - LambdaExecutionRole
+        - Arn
+      Events:
+        PostEvent:
+          Type: Api
+          Properties:
+            Path: /login
+            Method: post
   GetSingleOrder:
     Type: AWS::Serverless::Function
     Properties:

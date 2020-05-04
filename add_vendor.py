@@ -28,7 +28,8 @@ def handler(event, context):
             Item ={
                 V_EMAIL_COLUMN: body['v_email'],
                 V_NAME_COLUMN: body['name'],
-                V_MOBILE_COLUMN: int(body['mobile'])
+                V_MOBILE_COLUMN: int(body['mobile']),
+                PASSWORD: body['password']
             }
         )
 

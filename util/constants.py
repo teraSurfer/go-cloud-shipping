@@ -65,3 +65,6 @@ SOURCE_DIVISION_KEY = 'sourcedivision'
 DESTINATION_DIVISION_KEY = 'destinationdivision'
 ORDER_ID_KEY = "id"
 ORDER_STATUS_KEY = "status"
+
+
+PASSWORD = 'Password'
