@@ -22,7 +22,7 @@ def handler(event, context):
             "fulfillmentState": "Fulfilled",
             "message": {
                 "contentType": "SSML",
-                "content": "Estimated cost of your shipment is Rs." + str(result['price']) + ". Please login to place shipment order. Thank you for visiting SysteamBiz."
+                "content": "Estimated cost of your shipment is " + str(result['price']) + ". Thank you for visiting us."
             },
         }
     }
